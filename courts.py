@@ -1,6 +1,6 @@
 import pandas as pd
 
-def dailyAverage(file_path='master.xlsx', day=None, month=None, column_to_average=28):
+def dailyAverage(file_path= None, day=None, month=None, column_to_average=28):
 	df = pd.read_excel(file_path)
 
 	if 'Day' not in df.columns or 'Month' not in df.columns:
@@ -21,7 +21,7 @@ def dailyAverage(file_path='master.xlsx', day=None, month=None, column_to_averag
 	print(f'The daily average % occupied of month {month} and on a {day} is: {average_value:.2f}%')
 
 
-def monthlyAverage(file_path = 'master.xlsx', month = None, column_index=28):
+def monthlyAverage(file_path = None, month = None, column_index=28):
 
 	df = pd.read_excel(file_path)
 	
@@ -35,10 +35,14 @@ def monthlyAverage(file_path = 'master.xlsx', month = None, column_index=28):
 	
 	print(f"The average percentage of month {month} is: {percentage:.2f} %")
 
-file_path = 'master.xlsx'
+file_path = 'masterPickleball.xlsx'
 
-dayList = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturady', 'Sunday']
+dayList = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday']
+monthList = [5, 6, 7]
 
-data = dailyAverage(day = 'Thursday', month = 5)
+for month in monthList:
 
+	for day in dayList:
+
+		dailyAverage(file_path = file_path, day = day, month = month)
 
